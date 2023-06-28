@@ -31,6 +31,9 @@ const createTables = async () => {
             avatar VARCHAR(100),
             role ENUM('admin', 'customer') DEFAULT 'customer',
             address TEXT,
+            creditCard VARCHAR(16),
+            creditCardDate DATE,
+            creditCardCVC CHAR(3),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )

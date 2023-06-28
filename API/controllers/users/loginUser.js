@@ -1,7 +1,7 @@
 const generateError = require("../../helpers");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const getUserByEmailQuery = require("../../db/queries/users/getUserByEmailQuery");
+const selectUserByEmailQuery = require("../../db/queries/users/selectUserByEmailQuery");
 
 
 const loginUser = async (req, res, next) => {
@@ -15,7 +15,7 @@ const loginUser = async (req, res, next) => {
             generateError('Faltan campos', 400)
         }
 
-        const user = await getUserByEmailQuery(email)
+        const user = await selectUserByEmailQuery(email)
 
 
 

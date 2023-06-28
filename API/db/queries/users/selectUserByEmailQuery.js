@@ -4,7 +4,7 @@ const generateError = require("../../../helpers");
 const getDB = require("../../getDB");
 
 
-const getUserByEmailQuery = async (email) => {
+const selectUserByEmailQuery = async (email) => {
     let connection;
 
         try {
@@ -29,4 +29,4 @@ const getUserByEmailQuery = async (email) => {
         }
 }
 
-module.exports = getUserByEmailQuery
+module.exports = selectUserByEmailQuery
