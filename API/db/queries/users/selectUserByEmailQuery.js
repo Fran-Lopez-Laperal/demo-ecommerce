@@ -1,5 +1,3 @@
-
-
 const generateError = require("../../../helpers");
 const getDB = require("../../getDB");
 

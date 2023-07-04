@@ -44,15 +44,12 @@ const createTables = async () => {
         CREATE TABLE IF NOT EXISTS products(
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
             title VARCHAR(30) NOT NULL,
-            description VARCHAR(30) NOT NULL,
+            description TEXT NOT NULL,
             image VARCHAR(100),
             price DECIMAL(10,2),
-            idUser INT UNSIGNED NOT NULL,
-            category ENUM("mtb, carretera, bicis, complementos"),
+            category ENUM("mtb", "carretera", "bicis", "complementos"),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP,
-            FOREIGN KEY (idUser) REFERENCES users(id)
-            
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
     `);
 
@@ -72,6 +69,10 @@ const createTables = async () => {
         console.log('Tablas creadas!!!!!')
 
 
+
+  
+
+
     } catch (err) {
         console.log(err)
 
@@ -82,8 +83,4 @@ const createTables = async () => {
     }
 }
 
-
-
-
-
-createTables()
+createTables();
