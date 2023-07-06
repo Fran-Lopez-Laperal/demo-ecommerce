@@ -41,8 +41,22 @@ const {
   selectProducts,
 } = require("./controllers/products");
 
+
 app.post("/products/create", newProduct);
-app.get("/products", selectProducts)
+app.get("/products", selectProducts);
+
+
+//SHOPPINGCART
+const { 
+  getCart, 
+  insertProductToCart,
+  editProductCart,
+
+ } = require("./controllers/shoppingCart");
+
+app.get("/shoppingCart", getCart);
+app.post("/shoppingCart", insertProductToCart);
+app.put("/shoppingCart", editProductCart);
 
 
 app.use((err, req, res, next) => {

@@ -68,11 +68,6 @@ const createTables = async () => {
 
         console.log('Tablas creadas!!!!!')
 
-
-
-
-
-
     } catch (err) {
         console.log(err)
 
