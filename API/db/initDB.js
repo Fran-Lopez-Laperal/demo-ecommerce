@@ -70,7 +70,7 @@ const createTables = async () => {
 
 
 
-  
+
 
 
     } catch (err) {
