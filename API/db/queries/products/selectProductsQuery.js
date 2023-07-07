@@ -1,12 +1,13 @@
 const getDB = require("../../getDB");
 
-const selectProductsQuery = async (product) => {
+const selectProductsQuery = async () => {
     let connection;
     try {
         connection = await getDB();
 
-        const products = connection.query(`SELECT * FROM products`)
-
+        const queryResult = await connection.query(`SELECT * FROM products`);
+        const products = queryResult[0];
+        
         return products
 
     } finally {

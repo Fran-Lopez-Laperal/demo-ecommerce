@@ -1,10 +1,7 @@
 const getDB = require("../../getDB")
 
 
-
-
-
-const insertShoppingCartByUserQuery = async () => {
+const insertShoppingCartByUserQuery = async (idUser, idProduct) => {
     let connection
 
     try {
@@ -12,9 +9,14 @@ const insertShoppingCartByUserQuery = async () => {
         connection = await getDB();
 
 
-        const [cart] = await connection.query(`
-        
-        `)
+        const [insertCart] = await connection.query(`
+            INSERT INTO shoppingCart (idUser, idProduct)
+            SELECT ? , p.id 
+            FROM products p
+            WHERE p.id = ?
+        `,[idUser, idProduct]);
+
+        return insertCart
 
 
     } finally {

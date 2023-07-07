@@ -8,7 +8,7 @@ const loginUser = async (req, res, next) => {
 
 
     try {
-        console.log('Viene aqui el email',req.body.password)
+        console.log('Viene aqui el email', req.body.password)
         const { email, password } = req.body;
 
         if (!email || !password) {
@@ -18,7 +18,7 @@ const loginUser = async (req, res, next) => {
         const user = await selectUserByEmailQuery(email)
 
 
-
+        console.log('VIENE POR AQUI EL ID', user.id)
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
@@ -29,16 +29,17 @@ const loginUser = async (req, res, next) => {
 
         const userInfo = {
             id: user.id,
-            role: user.role
+            role: user.role,
         }
 
-        const tokenUser =  jwt.sign(userInfo, process.env.SECRET, {
+        const tokenUser = jwt.sign(userInfo, process.env.SECRET, {
             expiresIn: "7d"
         })
 
         res.send({
             status: "ok",
             data: {
+                id: user.id,
                 tokenUser
             }
         })

@@ -3,7 +3,7 @@ const selectUserByIdQuery = require("../../db/queries/users/selectUserByIdQuery"
 const profileUser = async (req, res, next) => {
 
     try {
-        console.log("Viene por aquí el usuario?????", req.params)
+        console.log("Viene por aquí el usuario?????", req.user)
 
         const user = await selectUserByIdQuery(req.user.id)
 

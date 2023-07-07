@@ -6,19 +6,14 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const isAuth = require("./middleware/isAuth");
-
-
-
+const isAdmin = require("./middleware/isAdmin");
 
 const app = express();
-
-
-
 
 //MIDDLEWARE
 app.use(cors());
 app.use(morgan("dev"));
-app.use(express.json())
+app.use(express.json());
 
 
 //USER
@@ -38,24 +33,25 @@ app.get("/users/profile", isAuth, profileUser);
 //PRODUCTS
 const {
   newProduct,
-  selectProducts,
+  getProducts
 } = require("./controllers/products");
 
 
-app.post("/products/create", newProduct);
-app.get("/products", selectProducts);
-
+app.post("/products/create",isAuth, isAdmin, newProduct);
+app.get("/products", getProducts);
 
 //SHOPPINGCART
 const { 
   getCart, 
-  insertProductToCart,
+  productToCart,
   editProductCart,
 
  } = require("./controllers/shoppingCart");
 
+
+
 app.get("/shoppingCart", getCart);
-app.post("/shoppingCart", insertProductToCart);
+app.post("/shoppingCart", productToCart);
 app.put("/shoppingCart", editProductCart);
 
 

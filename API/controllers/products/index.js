@@ -1,8 +1,8 @@
 const newProduct = require("./newProduct");
-const selectProducts = require("./selectProducts");
+const getProducts = require("./getProducts");
 
 
 module.exports= {
     newProduct,
-    selectProducts
+    getProducts
 }

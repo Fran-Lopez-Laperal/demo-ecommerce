@@ -9,7 +9,7 @@ const selectUserByIdQuery = async (idUser) => {
         connection = await getDB();
 
    const [users] = await connection.query(`
-        SELECT id, name, email, avatar, address, creditCard, creditCardDate, creditCardCVC FROM users WHERE id= ?`,
+        SELECT id,role, name, email, avatar, address, creditCard, creditCardDate, creditCardCVC FROM users WHERE id= ?`,
         [idUser])
 
         if(users.length < 1 ){
