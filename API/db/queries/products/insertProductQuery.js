@@ -2,7 +2,7 @@ const generateError = require("../../../helpers");
 const getDB = require("../../getDB");
 
 
-const insertProductQuery = async (title, description, image, price, category) => {
+const insertProductQuery = async (title, description, image, price, category, size, stock) => {
     let connection;
 
     try {
@@ -12,28 +12,22 @@ const insertProductQuery = async (title, description, image, price, category) =>
         let [products] = await connection.query(`
         SELECT id, title FROM products WHERE title = ?`,
             [title]);
-
-        if (products.length > 0) {
-            generateError('Ya existe un producto con este nombre', 403)
-        }
-
+            
 
         [products] = await connection.query(`
         SELECT id, description FROM products WHERE description = ?`,
             [description]);
 
-        // if (products.length > 0) {
-        //     generateError('Ya existe un producto con esta descripcion', 403)
-        // }
-
 
         [products] = await connection.query(`
-            INSERT INTO products(title, description, image, price, category) VALUES(?,?,?,?,?)`, [
+            INSERT INTO products(title, description, image, price, category, size, stock) VALUES(?,?,?,?,?,?,?)`, [
             title,
             description,
             image,
             price,
             category,
+            size,
+            stock
         ])
 
 

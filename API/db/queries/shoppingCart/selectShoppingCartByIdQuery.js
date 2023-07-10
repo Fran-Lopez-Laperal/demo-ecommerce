@@ -10,7 +10,7 @@ const selectShoppingCartByIdQuery = async (idUser) => {
         connection = await getDB();
 
         let [cart] = await connection. query(
-            `SELECT p.id, p.title, p.price, p.image, p.description, idUser, idProduct
+            `SELECT *
             FROM products p 
             INNER JOIN shoppingCart sc ON p.id = sc.idProduct   
             WHERE sc.idUSer = ? 

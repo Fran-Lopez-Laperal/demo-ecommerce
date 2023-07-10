@@ -47,6 +47,8 @@ const createTables = async () => {
             description TEXT NOT NULL,
             image VARCHAR(100),
             price DECIMAL(10,2),
+            size VARCHAR(2) NOT NULL,
+            stock TINYINT UNSIGNED NOT NULL,
             category ENUM("mtb", "carretera", "bicis", "complementos"),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP

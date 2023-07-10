@@ -44,7 +44,7 @@ app.get("/products", getProducts);
 const { 
   getCart, 
   productToCart,
-  editProductCart,
+  deleteProductCart,
 
  } = require("./controllers/shoppingCart");
 
@@ -52,7 +52,7 @@ const {
 
 app.get("/shoppingCart/:userId", isAuth, getCart);
 app.post("/shoppingCart",isAuth, productToCart);
-app.put("/shoppingCart", isAuth, editProductCart);
+app.put("/shoppingCart/:idProduct", isAuth, deleteProductCart);
 
 
 app.use((err, req, res, next) => {
