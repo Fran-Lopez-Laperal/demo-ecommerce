@@ -50,9 +50,9 @@ const {
 
 
 
-app.get("/shoppingCart", getCart);
-app.post("/shoppingCart", productToCart);
-app.put("/shoppingCart", editProductCart);
+app.get("/shoppingCart/:userId", isAuth, getCart);
+app.post("/shoppingCart",isAuth, productToCart);
+app.put("/shoppingCart", isAuth, editProductCart);
 
 
 app.use((err, req, res, next) => {
