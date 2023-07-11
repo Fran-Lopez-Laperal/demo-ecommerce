@@ -19,36 +19,58 @@ export const registerUserService = async (data) => {
 
 
 export const loginUserService = async ({ email, password }) => {
-
-    const response = await fetch('http://localhost:3000/users/login', {
-        method: 'POST',
+    const response = await fetch(`http://localhost:3000/users/login`, {
+        method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password })
-    })
-
-    const json = await response.json();
-    console.log(json.data)
-    if (!response.ok) {
-        throw new Error(json.message)
-    }
-
-
-}
-
-
-export const getMyUserDataService = async ({ token }) => {
-    const response = await fetch(`http://localhost:4000/users`, {
-      headers: {
-        Authorization: token,
-      },
+        body: JSON.stringify({ email, password }),
     });
-  
+
+    const json = await response.json();
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    return json.data;
+};
+
+
+
+export const getMyUserDataService = async (params) => {
+    if (!params || typeof params !== 'object' || !params.token) {
+        throw new Error('Se requiere un objeto con la propiedad "token" como parámetro');
+    }
+
+    const { token } = params;
+
+    const response = await fetch(`http://localhost:3000/users`, {
+        headers: {
+            Authorization: token,
+        },
+    });
+
+    const json = await response.json();
+
+    console.log(json);
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    return json.data;
+};
+
+
+export const getProductsService = async () => {
+    const response = await fetch(`http://localhost:3000/products`, {
+        method: 'GET',
+    });
+
     const json = await response.json();
     if (!response.ok) {
-      throw new Error(json.message);
+        throw new Error(json.message);
     }
-  
-    return json.data;
-  };
+
+    return json.products
+}

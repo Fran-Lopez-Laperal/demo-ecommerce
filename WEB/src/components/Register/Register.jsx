@@ -45,15 +45,15 @@ const Register = () => {
                 <form onSubmit={handleSubmit}>
                     <div >
                         <div >
-                            <label htmlFor="username">Usuario</label>
+                            <label htmlFor="name">Usuario</label>
                         </div>
                         <input
 
                             type="text"
-                            id="username"
-                            name="username"
+                            id="name"
+                            name="name"
                             required
-                            value={data.username}
+                            value={data.name}
                             onChange={handleInput}
                         />
                     </div>

@@ -8,9 +8,7 @@ const selectProducts = async (req, res, next) => {
         console.log("Donde salen estos datos???" , products)
         res.send({
             status: "ok",
-            data: {
-             products
-            }
+           products
         })
 
     } catch (error) {

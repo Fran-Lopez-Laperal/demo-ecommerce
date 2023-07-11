@@ -45,7 +45,7 @@ const createTables = async () => {
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
             title VARCHAR(30) NOT NULL,
             description TEXT NOT NULL,
-            image VARCHAR(100),
+            image VARCHAR(300),
             price DECIMAL(10,2),
             size VARCHAR(2) NOT NULL,
             stock TINYINT UNSIGNED NOT NULL,

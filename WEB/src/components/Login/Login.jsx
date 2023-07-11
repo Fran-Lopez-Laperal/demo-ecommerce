@@ -1,16 +1,15 @@
-import { useState } from "react";
+import  { useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-import "./Login.css";
 import { AuthContext } from "../../context/AuthContext";
+import "./Login.css";
 import { loginUserService } from "../../Service/apiServices";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login, setFilter } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleForm = async (e) => {
@@ -21,6 +20,7 @@ const Login = () => {
       const token = await loginUserService({ email, password });
 
       login(token);
+      setFilter(false);
       navigate("/");
     } catch (error) {
       setError(error.message);

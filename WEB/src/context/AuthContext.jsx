@@ -7,7 +7,9 @@ export const AuthContext = createContext(null);
 export const AuthProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
- 
+  const [isLogged, setIsLogged] = useState(false);
+  const [newsFilter, setNewsFilter] = useState([]);
+  const [filter, setFilter] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("token", token);
@@ -18,9 +20,11 @@ export const AuthProviderComponent = ({ children }) => {
       try {
         const data = await getMyUserDataService({ token });
         setUser(data);
+        setIsLogged(true);
       } catch (error) {
         setToken("");
         setUser(null);
+        setIsLogged(false);
       }
     };
     if (token) getUserData();
@@ -28,12 +32,17 @@ export const AuthProviderComponent = ({ children }) => {
 
   const login = (token) => {
     setToken(token);
+
   };
 
+  const newsFilterFunction = (filterString) => {
+    setNewsFilter(filterString);
+  };
 
   const logout = () => {
     setToken("");
     setUser(null);
+    setIsLogged(false);
     <Link to="/"></Link>;
   };
 
@@ -42,9 +51,14 @@ export const AuthProviderComponent = ({ children }) => {
       value={{
         token,
         user,
+        isLogged,
         login,
         logout,
         setUser,
+        newsFilterFunction,
+        newsFilter,
+        filter,
+        setFilter,
       }}
     >
       {children}

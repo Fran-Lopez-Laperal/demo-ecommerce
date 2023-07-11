@@ -29,6 +29,7 @@ app.post("/users/register", registerUser);
 app.post("/users/login", loginUser);
 app.put("/users/edit", isAuth, editUser);
 app.get("/users/profile", isAuth, profileUser);
+app.get("/users", isAuth, profileUser);
 
 //PRODUCTS
 const {
