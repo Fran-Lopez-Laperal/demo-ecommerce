@@ -34,12 +34,14 @@ app.get("/users", isAuth, profileUser);
 //PRODUCTS
 const {
   newProduct,
-  getProducts
+  getProducts,
+  selectCategoryProduct
 } = require("./controllers/products");
 
 
 app.post("/products/create",isAuth, isAdmin, newProduct);
 app.get("/products", getProducts);
+app.get("/products/category", selectCategoryProduct);
 
 //SHOPPINGCART
 const { 

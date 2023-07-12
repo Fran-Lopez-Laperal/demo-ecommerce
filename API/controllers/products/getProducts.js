@@ -5,7 +5,7 @@ const selectProducts = async (req, res, next) => {
 
     try {
         const products = await selectProductsQuery();
-        console.log("Donde salen estos datos???" , products)
+        // console.log("Donde salen estos datos???" , products)
         res.send({
             status: "ok",
            products
