@@ -13,7 +13,7 @@ const selectProductByCategoryQuery = async (category) => {
             [category]
         )
 
-        return product[0]
+        return product
 
     } finally {
         if (connection) connection.release()

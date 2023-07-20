@@ -4,7 +4,6 @@ const Home = () => {
   return (
     <>
       <header>
-        <h1>Products</h1>
       </header>
       <nav>
         <menu>

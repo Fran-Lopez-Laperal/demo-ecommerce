@@ -41,7 +41,7 @@ const {
 
 app.post("/products/create",isAuth, isAdmin, newProduct);
 app.get("/products", getProducts);
-app.get("/products/category", selectCategoryProduct);
+app.get("/products/:category", selectCategoryProduct);
 
 //SHOPPINGCART
 const { 

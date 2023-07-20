@@ -74,3 +74,18 @@ export const getProductsService = async () => {
 
     return json.products
 }
+
+export const getProductFromCategory = async (param) => {
+    const response = await fetch(`http://localhost:3000/products/category?category=${param}`, {
+        method: 'GET'
+    });
+
+    const json = await response.json();
+    console.log(json)
+    if (!response.ok) {
+        throw new Error(json.message)
+    }
+    return json
+}
+
+getProductFromCategory('montaña')
